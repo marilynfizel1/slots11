@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Machine</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Slot Machine</h1>
+    <div id="container">
+        <div id="slot-machine">
+            <img src="image1.png" alt="Image 1">
+            <img src="image2.png" alt="Image 2">
+            <img src="image3.png" alt="Image 3">
+            <br>
+            <img src="image4.png" alt="Image 4">
+            <img src="image5.png" alt="Image 5">
+            <img src="image6.png" alt="Image 6">
+            <br>
+            <img src="image7.png" alt="Image 7">
+            <img src="image8.png" alt="Image 8">
+            <img src="image9.png" alt="Image 9">
+        </div>
+        <p>Score: <span id="score">0</span></p>
+        <button id="spin-button">Spin</button>
+    </div>
+
+    <script>
+        const images = ["image1.png", "image2.png", "image3.png", "image4.png", "image5.png", "image6.png", "image7.png", "image8.png", "image9.png"];
+        const scoreDisplay = document.getElementById("score");
+        const spinButton = document.getElementById("spin-button");
+        const slotMachine = document.getElementById("slot-machine");
+
+        spinButton.addEventListener("click", () => {
+            slotMachine.innerHTML = "";
+            for (let i = 0; i < 3; i++) {
+                const randomIndex = Math.floor(Math.random() * images.length);
+                const img = document.createElement("img");
+                img.src = images[randomIndex];
+                img.alt = "Image " + (randomIndex + 1);
+                slotMachine.appendChild(img);
+            }
+            updateScore();
+        });
+
+        let score = 0;
+
+        function updateScore() {
+            score += 10;
+            scoreDisplay.textContent = score;
+        }
+    </script>
+</body>
+</html> 
